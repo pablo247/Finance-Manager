@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Finance Manager</string>
+    <string name="app_main_nav_item_title_transactions">Transacciones</string>
+    <string name="app_main_nav_item_title_charts">Informes</string>
+    <string name="app_main_nav_item_title_accounts">Cuentas</string>
+    <string name="app_main_nav_item_title_settings">Configuración</string>
+
+
+    <string name="hello_blank_fragment_transactions">Hello blank fragment Transacciones</string>
+    <string name="hello_blank_fragment_reports">Hello blank fragment Informes</string>
+    <string name="hello_blank_fragment_account">Hello blank fragment Cuentas</string>
+    <string name="hello_blank_fragment_settings">Hello blank fragment Configuración</string>
+</resources>
