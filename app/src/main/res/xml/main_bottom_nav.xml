@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        drawable="@drawable/ic_transaction"
+        text="@string/app_main_nav_item_title_transactions" />
+
+    <tab
+        drawable="@drawable/ic_report"
+        text="@string/app_main_nav_item_title_charts" />
+
+    <tab
+        drawable="@drawable/ic_credit_cards"
+        text="@string/app_main_nav_item_title_accounts" />
+
+    <tab
+        drawable="@drawable/ic_settings"
+        text="@string/app_main_nav_item_title_settings" />
+
+</tabs>
