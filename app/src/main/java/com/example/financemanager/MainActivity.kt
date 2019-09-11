@@ -2,16 +2,18 @@ package com.example.financemanager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.financemanager.FragmentsNav.FragmentAccounts
-import com.example.financemanager.FragmentsNav.FragmentReports
-import com.example.financemanager.FragmentsNav.FragmentSettings
-import com.example.financemanager.FragmentsNav.FragmentTransactions
+import androidx.fragment.app.Fragment
+import com.example.financemanager.fragmentsNav.*
 import com.iammert.library.readablebottombar.ReadableBottomBar
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ReadableBottomBar.ItemSelectListener {
 
+    private val fragmentTransactions: Fragment = FragmentTransactions()
+    private val fragmentReports: Fragment = FragmentReports()
+    private val fragmentAccounts: Fragment = FragmentAccounts()
+    private val fragmentSettings: Fragment = FragmentSettings()
     private var bottomNavBar : ReadableBottomBar? = null
+    private var indexCurrentTabBottomNavBar: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,56 +22,28 @@ class MainActivity : AppCompatActivity(), ReadableBottomBar.ItemSelectListener {
         bottomNavBar = findViewById(R.id.bottomBar)
         bottomNavBar!!.setOnItemSelectListener(this)
 
-        if (savedInstanceState == null) {
-            val fragment = FragmentTransactions()
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-        }
-
-        /*main_bottom_nav.setOnNavigationItemSelectedListener(this)*/
+        if (savedInstanceState == null)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentTransactions, fragmentTransactions.javaClass.simpleName).commit()
     }
 
     override fun onItemSelected(index: Int) {
-        // bottomNavBar!!.selectItem(index)
-        when (index) {
-            0 -> {
-                val fragment = FragmentTransactions()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            1 -> {
-                val fragment = FragmentReports()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            2 -> {
-                val fragment = FragmentAccounts()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            3 -> {
-                val fragment = FragmentSettings()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-        }
+        val currentFragment: Fragment? = getFragment(indexCurrentTabBottomNavBar)
+        val newFragment: Fragment? = getFragment(index)
+        indexCurrentTabBottomNavBar = index
+
+        val transaction = supportFragmentManager.beginTransaction()
+        if (newFragment!!.isAdded) transaction.hide(currentFragment!!).show(newFragment)
+        else transaction.hide(currentFragment!!).add(R.id.fragment_container, newFragment, newFragment.javaClass.simpleName)
     }
 
-    /*override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when (p0.itemId) {
-            R.id.menu_transactions -> {
-                val fragment = FragmentTransactions()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            R.id.menu_reports -> {
-                val fragment = FragmentReports()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            R.id.menu_accounts -> {
-                val fragment = FragmentAccounts()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
-            R.id.menu_settings -> {
-                val fragment = FragmentSettings()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment.javaClass.simpleName).commit()
-            }
+    private fun getFragment(index: Int): Fragment? {
+        when (index) {
+            0 -> return fragmentTransactions
+            1 -> return fragmentReports
+            2 -> return fragmentAccounts
+            3 -> return fragmentSettings
         }
-        return true
-    }*/
+        return null
+    }
 
 }

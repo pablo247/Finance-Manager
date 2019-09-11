@@ -1,4 +1,4 @@
-package com.example.financemanager.FragmentsNav
+package com.example.financemanager.fragmentsNav
 
 
 import android.os.Bundle

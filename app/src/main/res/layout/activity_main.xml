@@ -35,27 +35,13 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:rbb_tabs="@xml/main_bottom_nav"
-        app:rbb_textColor="@color/colorText"
-        app:rbb_indicatorHeight="3dp"
-        app:rbb_indicatorColor="@color/colorPrimary"
-        app:rbb_textSize="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/main_bottom_nav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:itemTextColor="@color/bottom_nav_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/main_bottom_nav_items"
-        app:labelVisibilityMode="labeled"/>-->
+        app:rbb_indicatorColor="@color/colorPrimary"
+        app:rbb_indicatorHeight="3dp"
+        app:rbb_tabs="@xml/main_bottom_nav"
+        app:rbb_textColor="@color/colorText"
+        app:rbb_textSize="6dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
