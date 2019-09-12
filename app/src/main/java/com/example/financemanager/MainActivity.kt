@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), ReadableBottomBar.ItemSelectListener {
         val transaction = supportFragmentManager.beginTransaction()
         if (newFragment!!.isAdded) transaction.hide(currentFragment!!).show(newFragment)
         else transaction.hide(currentFragment!!).add(R.id.fragment_container, newFragment, newFragment.javaClass.simpleName)
+        transaction.commit()
     }
 
     private fun getFragment(index: Int): Fragment? {
