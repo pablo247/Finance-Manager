@@ -10,4 +10,8 @@
     <string name="hello_blank_fragment_reports">Hello blank fragment Informes</string>
     <string name="hello_blank_fragment_account">Hello blank fragment Cuentas</string>
     <string name="hello_blank_fragment_settings">Hello blank fragment Configuración</string>
+
+
+    <string name="date_picker_format">yyyy, MMM</string>
+    <string name="format">yyyy, MMM</string>
 </resources>
